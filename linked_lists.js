@@ -75,6 +75,24 @@ class SinglyLinkedList{
         this.length++;
     return this;
     }
+
+    get(indexNumber) {
+
+        if(indexNumber > this.length) {
+            return undefined;
+        }
+
+        if(indexNumber === 0) {
+            return this.head;
+        }
+
+        let currentVal = this.head;
+
+        for(let i = 0; i < indexNumber; i++) {
+            currentVal = currentVal.next;
+        }
+        return currentVal;
+    }
 }
 
 const list = new SinglyLinkedList();
@@ -83,6 +101,5 @@ list.push("my");
 list.push("name");
 list.push("is");
 list.push("Adam");
-list.pop();
-list.shift();
-console.log(list);
+
+console.log(list.get(4));
