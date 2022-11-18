@@ -21,12 +21,7 @@ class SinglyLinkedList{
             this.tail = node;
         }
         else { 
-            if(this.head === this.tail) {
-                this.head.next = node;
-            }
-            else {
-                this.tail.next = node;
-            }
+            this.tail.next = node;
             this.tail = node;
         }
     }
@@ -38,4 +33,4 @@ list.push("my");
 list.push("name");
 list.push("is");
 list.push("Adam");
-console.log(list.tail);
+console.log(list);
