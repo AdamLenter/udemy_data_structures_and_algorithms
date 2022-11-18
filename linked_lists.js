@@ -79,7 +79,7 @@ class SinglyLinkedList{
     get(indexNumber) {
 
         if(indexNumber < 0 || indexNumber > this.length) {
-            return undefined;
+            return null;
         }
 
         if(indexNumber === 0) {
