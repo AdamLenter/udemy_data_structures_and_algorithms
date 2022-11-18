@@ -48,6 +48,18 @@ class SinglyLinkedList{
 
         return oldTail;
     }
+
+    shift() {
+        if(this.length === 0) return undefined;
+        const oldHead = this.head;
+        this.head = oldHead.next;
+        this.length--;
+
+        if(this.length === 0) {
+            this.tail = null;
+        }
+        return oldHead;
+    }
 }
 
 const list = new SinglyLinkedList();
@@ -57,4 +69,5 @@ list.push("name");
 list.push("is");
 list.push("Adam");
 list.pop();
+list.shift();
 console.log(list);
