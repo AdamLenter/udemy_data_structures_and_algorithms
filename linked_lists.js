@@ -93,6 +93,16 @@ class SinglyLinkedList{
         }
         return currentVal;
     }
+
+    set(index, val) {
+        let nodeToUpdate = this.get(index);
+        if(nodeToUpdate) {
+            nodeToUpdate.val = val;
+            return true;
+        }
+    
+        return false;
+    }
 }
 
 const list = new SinglyLinkedList();
@@ -101,5 +111,5 @@ list.push("my");
 list.push("name");
 list.push("is");
 list.push("Adam");
-
-console.log(list.get(4));
+list.set(4, "Bob");
+console.log(list);
