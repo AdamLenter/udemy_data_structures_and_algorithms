@@ -103,6 +103,25 @@ class SinglyLinkedList{
     
         return false;
     }
+
+    insert(index, val) {
+        if(index < 0 || index > this.length) {
+            return false;
+        }
+
+        if(index === this.length) return !!this.push(val);
+        if(index === 0) return !!this.unshift(val);
+        
+        const newNode = new Node(val);
+        
+        const previousValue = this.get(index - 1);
+
+        newNode.next = previousValue.next;
+        previousValue.next = newNode;
+
+        this.length++;
+        return true;
+    }
 }
 
 const list = new SinglyLinkedList();
@@ -111,5 +130,8 @@ list.push("my");
 list.push("name");
 list.push("is");
 list.push("Adam");
-list.set(4, "Bob");
-console.log(list);
+list.insert(4, "Mr.");
+console.log(list.get(3));
+console.log(list.get(4));
+console.log(list.get(5));
+
