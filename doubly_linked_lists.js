@@ -39,7 +39,7 @@ class DoublyLinkedList{
             this.tail = null;
         }
         else {
-            const newTail = this.tail.previous;
+            const newTail = currentTail.previous;
             newTail.next = null;
             this.tail = newTail;
         }
