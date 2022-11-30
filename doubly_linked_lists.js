@@ -12,14 +12,29 @@ class DoublyLinkedList{
         this.tail = null;
         this.length = 0;
     }
+
+    push(val) {
+        const node = new Node(val);
+
+        if(this.length === 0) {
+            this.head = node;
+            this.tail = node;
+        }
+        else {
+            node.previous = this.tail;
+            this.tail.next = node;
+            this.tail = node;
+        }
+        this.length++;
+    }
 }
 
-const first = new Node("First");
-const second = new Node("Second");
-first.next = second;
-second.previous = first;
 
-console.log(first);
-console.log(second);
+list = new DoublyLinkedList();
+list.push("Hello");
+list.push("Yo yo yo");
+list.push("Another one");
+console.log(list);
+
 
 
