@@ -157,6 +157,7 @@ class SinglyLinkedList{
             previous = node;
             node = next;
         }
+        return this;
     }
 
     print() {
