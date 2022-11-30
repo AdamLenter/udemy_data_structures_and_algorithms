@@ -143,6 +143,14 @@ class SinglyLinkedList{
         this.length--;
         return itemToRemove;
     }
+
+    print() {
+        let currentValue = this.head;
+        for(let i = 0; i < this.length; i++) {
+            console.log(currentValue.val);
+            currentValue = currentValue.next;
+        }
+    }
 }
 
 const list = new SinglyLinkedList();
@@ -152,4 +160,4 @@ list.push("name");
 list.push("is");
 list.push("Adam");
 
-console.log(list.remove(4));
+list.print();
