@@ -144,6 +144,21 @@ class SinglyLinkedList{
         return itemToRemove;
     }
 
+    reverse() {
+        let node = this.head;
+        this.head = this.tail;
+        this.tail = node;
+        let next;
+        let previous = null;
+
+        for(let i = 0; i < this.length; i++) {
+            next = node.next;
+            node.next = previous;
+            previous = node;
+            node = next;
+        }
+    }
+
     print() {
         let currentValue = this.head;
         for(let i = 0; i < this.length; i++) {
@@ -159,5 +174,5 @@ list.push("my");
 list.push("name");
 list.push("is");
 list.push("Adam");
-
+list.reverse();
 list.print();
