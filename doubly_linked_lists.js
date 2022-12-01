@@ -87,15 +87,36 @@ class DoublyLinkedList{
         }
         return this;
     }
+
+    get(index) {
+        if(index < 0 || index >= this.length) {
+            return null;
+        }
+        let currentNode;
+        if(index <= this.length/2) {
+            currentNode = this.head;
+            for(let i = 1; i <= index; i++) {
+                currentNode = currentNode.next;
+            }
+        }
+        else {
+            currentNode = this.tail;
+            for(let i = this.length - 2; i >= index; i--) {
+                currentNode = currentNode.previous;
+            }
+        }
+
+        return currentNode;
+    }
 }
 
 
 list = new DoublyLinkedList();
 list.push("Hello");
-list.push("Yo yo yo");
-list.push("Another one");
-list.unshift("Word");
-console.log(list);
-
+list.push("my");
+list.push("name");
+list.push("is");
+list.push("Fred");
+list.get(3);
 
 
