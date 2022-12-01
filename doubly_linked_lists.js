@@ -144,6 +144,30 @@ class DoublyLinkedList{
         return true;
     }
 
+    remove(index) {
+        if(index < 0 || index > this.length) {
+            return undefined;
+        } 
+        if(index === 0) {
+            return this.shift();
+        }
+        if(index === this.length - 1) {
+            return this.pop();
+        }
+        const nodeToRemove = this.get(index);
+        const previousNode = nodeToRemove.previous;
+        const nextNode = nodeToRemove.next;
+
+        previousNode.next = nextNode;
+        nextNode.previous = previousNode;
+
+        nodeToRemove.next = null;
+        nodeToRemove.previous = null;
+        this.length--;
+
+        return nodeToRemove;
+    }
+
     print() {
         let currentNode = this.head;
         console.log(currentNode.val);
@@ -162,7 +186,7 @@ list.push("my");
 list.push("name");
 list.push("is");
 list.push("Fred");
-list.insert(5, "Mr.");
+console.log(list.remove(4));
 list.print();
 
 
