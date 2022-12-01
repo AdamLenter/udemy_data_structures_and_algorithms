@@ -108,6 +108,17 @@ class DoublyLinkedList{
 
         return currentNode;
     }
+
+    set(index, val) {
+        const nodeToUpdate = this.get(index);
+
+        if(nodeToUpdate) {
+            nodeToUpdate.val = val;
+            return true;
+        }
+
+        return false;
+    }
 }
 
 
