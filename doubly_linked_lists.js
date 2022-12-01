@@ -70,6 +70,23 @@ class DoublyLinkedList{
         return currentHead;
         }
     }
+
+    unshift(val) {
+        const newNode = new Node(val);
+
+        if(this.length === 0) {
+            this.head = newNode;
+            this.tail = newNode;
+        }
+        else {
+            const originalHead = this.head;
+            this.head = newNode;
+            newNode.next = originalHead;
+            originalHead.previous = newNode;
+            this.length++;
+        }
+        return this;
+    }
 }
 
 
@@ -77,7 +94,7 @@ list = new DoublyLinkedList();
 list.push("Hello");
 list.push("Yo yo yo");
 list.push("Another one");
-console.log(list.shift());
+list.unshift("Word");
 console.log(list);
 
 
