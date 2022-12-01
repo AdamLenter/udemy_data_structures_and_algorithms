@@ -119,6 +119,40 @@ class DoublyLinkedList{
 
         return false;
     }
+
+    insert(index, val) {
+        if(index < 0 || index > this.length) {
+            return false;
+        } 
+        if(index === 0) {
+            return !!this.unshift(val);
+        }
+        if(index === this.length) {
+            return !!this.push(val)
+        }
+
+        let newNode = new Node(val);
+
+        let currentNode = this.get(index);
+        let previousNode = currentNode.previous;
+        previousNode.next = newNode;
+        newNode.previous = previousNode;
+        newNode.next = currentNode;
+        currentNode.previous = newNode;
+
+        this.length++;
+        return true;
+    }
+
+    print() {
+        let currentNode = this.head;
+        console.log(currentNode.val);
+
+        for(let i = 0; i < this.length - 1; i++) {
+            currentNode = currentNode.next;
+            console.log(currentNode.val);
+        } 
+    }
 }
 
 
@@ -128,6 +162,7 @@ list.push("my");
 list.push("name");
 list.push("is");
 list.push("Fred");
-list.get(3);
+list.insert(5, "Mr.");
+list.print();
 
 
