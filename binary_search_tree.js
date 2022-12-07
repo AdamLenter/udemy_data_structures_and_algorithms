@@ -47,10 +47,44 @@ class BinarySearchTree {
         }
     return this;
     }
+
+    find(val) {
+        let current = this.root
+        
+        while(true) {
+            if(current.val === val) {
+                return true;
+            }
+            else {
+                if(val < current.val) {
+                    //The value should go to the left:
+                    if(current.left) {
+                        current = current.left;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+                else {
+                    if(current.right) {
+                        current = current.right;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+            }
+        }
+       
+    }
 }
 
 let tree = new BinarySearchTree();
 tree.insert(20);
 tree.insert(15);
+tree.insert(5);
+tree.insert(12);
+tree.insert(60);
+tree.insert(55);
 
-console.log(tree);
+console.log(tree.find(5));
