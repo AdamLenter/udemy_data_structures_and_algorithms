@@ -168,6 +168,28 @@ class DoublyLinkedList{
         return nodeToRemove;
     }
 
+    reverse(){
+        let currentNode = this.head;
+        let newNext = null;
+        let previousNode;
+        for(let i = 1; i < this.length; i++) {
+            currentNode = currentNode.next;
+            previousNode = currentNode.previous;
+            previousNode.next = newNext;
+            previousNode.previous = currentNode;
+            newNext = previousNode;
+            }
+
+        currentNode.next = previousNode;
+        currentNode.previous = null;
+
+        const temporaryHead = this.tail;
+        this.tail = this.head;
+        this.head = temporaryHead;
+
+        return this;
+        }
+
     print() {
         let currentNode = this.head;
         console.log(currentNode.val);
@@ -186,7 +208,8 @@ list.push("my");
 list.push("name");
 list.push("is");
 list.push("Fred");
-console.log(list.remove(4));
+list.reverse();
+console.log(list.head.next);
 list.print();
 
 
