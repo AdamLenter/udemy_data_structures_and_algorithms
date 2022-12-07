@@ -49,6 +49,11 @@ class BinarySearchTree {
     }
 
     find(val) {
+
+        if(!this.root) {
+            return false;
+        }
+
         let current = this.root
         
         while(true) {
