@@ -41,7 +41,7 @@ class BinarySearchTree {
                     }
                 }
                 else {
-                    terminate = true;
+                    return undefined;
                 }
             }
         }
@@ -53,4 +53,4 @@ let tree = new BinarySearchTree();
 tree.insert(20);
 tree.insert(15);
 
-console.log(tree.root.right.right.right.left);
+console.log(tree);
