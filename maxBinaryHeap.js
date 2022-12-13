@@ -27,6 +27,49 @@ class maxBinaryHeap {
         }
         return this;
     }
+
+    extractMax() {
+        if(this.values.length === 0) {
+            return undefined;
+        }
+        
+        const oldHead = this.values[0];
+        const newHead = this.values[this.values.length - 1];
+        
+        this.values[0] = newHead;
+        this.values.pop();
+
+        let currentIndex = 0;
+        let compareIndex = 0;
+
+        while(true && currentIndex < this.values.length) {
+            if(this.values[(currentIndex * 2) + 1]) {
+                if(this.values[(currentIndex * 2) + 2]) {
+                    if(this.values[(currentIndex * 2) + 1] > this.values[(currentIndex * 2) + 2]) {
+                        compareIndex = (currentIndex * 2) + 1;
+                    }
+                    else {
+                        compareIndex = (currentIndex * 2) + 2;
+                    }
+                }
+                else {
+                    compareIndex = (currentIndex * 2) + 1;
+                }
+            }
+            else {
+                break;
+            }
+            if(this.values[compareIndex] > newHead) {
+                this.values[currentIndex] = this.values[compareIndex];
+                this.values[compareIndex] = newHead;
+                currentIndex = compareIndex;
+            }
+            else {
+                break;
+            }
+        }
+        return oldHead;
+    }
 }
 
 
@@ -38,4 +81,5 @@ heap.insert(100);
 heap.insert(17);
 heap.insert(5);
 heap.insert(36);
+heap.extractMax();
 console.log(heap);

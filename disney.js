@@ -10,6 +10,14 @@ const mickey = {
     characterType: "Mouse", 
     definingFeatures: ["big ears", "yellow shoes", "squeaky voice"], 
     previousCharacter: null, //Present in doubly linked lists only
+    nextCharacter: donald
+}
+
+const donald = {
+    name: "Donald Duck", 
+    characterType: "Duck", 
+    definingFeatures: ["beret", "blue shirt", "no pants"], 
+    previousCharacter: mickey, //See above
     nextCharacter: minnie
 }
 
@@ -17,7 +25,7 @@ const minnie = {
     name: "Minnie Mouse", 
     characterType: "Mouse", 
     definingFeatures: ["big ears", "hair bow", "polka dot dress"], 
-    previousCharacter: mickey, //See comment above
+    previousCharacter: donald, //See comment above
     nextCharacter: goofy
 }
 
@@ -37,13 +45,7 @@ const pluto = {
     nextCharacter: goofy
 }
 
-const donald = {
-    name: "Minnie Mouse", 
-    characterType: "Mouse", 
-    definingFeatures: ["big ears", "hair bow", "polka dot dress"], 
-    previousCharacter: mickey, //See above
-    nextCharacter: goofy
-}
+
 
 
 
