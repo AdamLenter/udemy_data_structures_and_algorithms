@@ -32,6 +32,26 @@ class Graph {
         delete this.adjacencyList[vertexToRemove];
         return this;
     }
+
+    depthFirstRecursive(start) {
+        let result = [];
+        let visited = {};
+        const adjacencyList = this.adjacencyList;
+        
+        (function dfs(vertex){
+            visited[vertex] = true;
+            result.push(vertex);
+
+            for(let i = 0; i < adjacencyList[vertex].length; i++) {
+                if(adjacencyList[vertex][i] in visited == false) {
+                    return dfs(adjacencyList[vertex][i]);
+                }
+            }
+            
+        })(start)
+
+        return result;
+    }
 }
 
 const graph = new Graph();
@@ -47,4 +67,4 @@ const mb = graph.addEdge("Miami", "Boston");
 const mt = graph.addEdge("Miami", "Tokyo");
 const ld = graph.addEdge("London", "Detroit");
 
-console.log(graph);
+console.log(graph.depthFirstRecursive("Miami"));
