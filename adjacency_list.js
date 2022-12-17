@@ -22,6 +22,16 @@ class Graph {
 
         return this;
     }
+
+    removeVertex(vertexToRemove) {
+        for(let i = 0; i < this.adjacencyList[vertexToRemove].length; i++) {
+            const connectedVertex = this.adjacencyList[vertexToRemove][i];
+            this.adjacencyList[connectedVertex] = this.adjacencyList[connectedVertex].filter((vertex)=>vertex !== vertexToRemove);
+        }
+
+        delete this.adjacencyList[vertexToRemove];
+        return this;
+    }
 }
 
 const graph = new Graph();
@@ -31,6 +41,6 @@ const boston = graph.addVertex("Boston");
 const tb = graph.addEdge("Tokyo", "Boston");
 const td = graph.addEdge("Tokyo", "Detroit");
 const db = graph.addEdge("Detroit", "Boston");
-graph.removeEdge("Tokyo", "Boston");
+graph.removeVertex("Boston");
 
 console.log(graph);
