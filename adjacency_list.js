@@ -17,8 +17,10 @@ class Graph {
     }
 
     removeEdge(vertex1, vertex2) {
-        this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter((vertex)=>vertex != vertex2);
-        this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter((vertex)=>vertex != vertex1);
+        this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter((vertex)=>vertex !== vertex2);
+        this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter((vertex)=>vertex !== vertex1);
+
+        return this;
     }
 }
 
