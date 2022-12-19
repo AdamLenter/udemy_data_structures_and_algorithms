@@ -52,6 +52,29 @@ class Graph {
 
         return result;
     }
+
+    depthFirstIterative(start) {
+        const stack = [start];
+        const result = [];
+        const visited = {};
+
+        let currentVertex;
+
+        visited[start] = true;
+
+        while(stack.length) {
+            currentVertex = stack.pop();
+            result.push(currentVertex);
+
+            this.adjacencyList[currentVertex].forEach(neighbor=> {
+                if(!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    stack.push(neighbor);
+                }
+            })
+        }
+        return result;
+    }
 }
 
 const graph = new Graph();
@@ -67,4 +90,4 @@ const mb = graph.addEdge("Miami", "Boston");
 const mt = graph.addEdge("Miami", "Tokyo");
 const ld = graph.addEdge("London", "Detroit");
 
-console.log(graph.depthFirstRecursive("Miami"));
+console.log(graph.depthFirstIterative("Miami"));
